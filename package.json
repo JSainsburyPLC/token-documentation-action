@@ -12,8 +12,10 @@
   },
   "homepage": "https://github.com/JSainsburyPLC/token-documentation-action#readme",
   "dependencies": {
-    "@actions/core": "1.3.0",
-    "@actions/github": "5.0.0"
+    "@actions/core": "^1.6.0",
+    "@actions/github": "5.0.0",
+    "@ctrl/golang-template": "^1.4.0",
+    "octokit": "^1.7.1"
   },
   "devDependencies": {
     "@types/jest": "26.0.23",

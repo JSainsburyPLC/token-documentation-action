@@ -1,0 +1,15 @@
+name: "Token Documentation"
+description: "Generate markdown documentation for tokens present in a repository's secrets"
+inputs:
+  secrets:
+    description: "JSON serialized secrets"
+    required: true
+  file-name:
+    description: "Filename to output"
+    required: true
+  template:
+    description: "Golang template used to generate docs"
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"

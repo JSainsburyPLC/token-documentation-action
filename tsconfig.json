@@ -10,5 +10,5 @@
     "outDir": "./lib",
     "baseUrl": "./"
   },
-  "exclude": ["node_modules", "lib", "dist", "**/*.test.ts"]
+  "exclude": ["node_modules", "lib", "dist"]
 }
