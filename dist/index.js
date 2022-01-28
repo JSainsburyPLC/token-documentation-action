@@ -61,6 +61,7 @@ const getTokenInfo = async (secrets) => {
         }
         results.push({ name, user, hash });
     }
+    results.sort((x, y) => (x.name < y.name ? -1 : 1));
     return results;
 };
 exports.getTokenInfo = getTokenInfo;

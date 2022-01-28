@@ -24,5 +24,6 @@ export const getTokenInfo = async (secrets: {[key: string]: string}): Promise<To
 
     results.push({name, user, hash});
   }
+  results.sort((x, y) => (x.name < y.name ? -1 : 1));
   return results;
 };

@@ -39,4 +39,22 @@ describe('getTokenInfo', () => {
       }
     ]);
   });
+  it('Should sort the output', async () => {
+    const result = await getTokenInfo({
+      tokenB: token,
+      tokenA: token
+    });
+    expect(result).toEqual([
+      {
+        name: 'tokenA',
+        user: 'bob',
+        hash: '767db676c8a9c71dbc09c1e812856e6b9e0d2238b0dd2b2f1e0b8b764d07ab09' //'bob_' + token
+      },
+      {
+        name: 'tokenB',
+        user: 'bob',
+        hash: '767db676c8a9c71dbc09c1e812856e6b9e0d2238b0dd2b2f1e0b8b764d07ab09' //'bob_' + token
+      }
+    ]);
+  });
 });
