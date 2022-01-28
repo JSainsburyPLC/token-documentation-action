@@ -49,8 +49,16 @@ const getTokenInfo = async (secrets) => {
             continue;
         }
         const token = secrets[name];
-        const user = await (0, utils_1.getUser)(token);
-        const hash = crypto_1.default.createHash('sha256').update(`${user}_${token}`).digest('hex');
+        let user, hash;
+        try {
+            user = await (0, utils_1.getUser)(token);
+            hash = crypto_1.default.createHash('sha256').update(`${user}_${token}`).digest('hex');
+        }
+        catch (err) {
+            (0, core_1.error)(err);
+            user = 'Invalid token';
+            hash = '';
+        }
         results.push({ name, user, hash });
     }
     return results;
