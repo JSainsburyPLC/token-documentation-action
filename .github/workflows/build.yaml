@@ -1,0 +1,28 @@
+name: Build action
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Build
+        run: npm ci && npm run all
+      - run: git add dist && git checkout .
+        if: ${{ github.event_name == 'push' }}
+      - name: Create Pull Request
+        if: ${{ github.event_name == 'push' }}
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: Build and commit artifact
+          commit-message: "chore: CI build of dist folder"
