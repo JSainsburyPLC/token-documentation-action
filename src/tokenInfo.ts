@@ -1,3 +1,4 @@
+import {warning} from '@actions/core';
 import crypto from 'crypto';
 import {getUser, isGhToken} from './utils';
 
@@ -7,7 +8,7 @@ export const getTokenInfo = async (secrets: {[key: string]: string}): Promise<To
   const results: TokenInfo[] = [];
   for (const name of Object.keys(secrets).filter(n => n !== 'GITHUB_TOKEN')) {
     if (!isGhToken(secrets[name])) {
-      console.log(`${name} is not a GH token`);
+      warning(`${name} is not a GH token`);
       continue;
     }
     const token = secrets[name];
