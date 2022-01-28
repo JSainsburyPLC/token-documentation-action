@@ -1,4 +1,4 @@
-import {warning} from '@actions/core';
+import {error, warning} from '@actions/core';
 import crypto from 'crypto';
 import {getUser, isGhToken} from './utils';
 
@@ -12,8 +12,16 @@ export const getTokenInfo = async (secrets: {[key: string]: string}): Promise<To
       continue;
     }
     const token = secrets[name];
-    const user = await getUser(token);
-    const hash = crypto.createHash('sha256').update(`${user}_${token}`).digest('hex');
+    let user, hash;
+    try {
+      user = await getUser(token);
+      hash = crypto.createHash('sha256').update(`${user}_${token}`).digest('base64');
+    } catch (err: Error | unknown) {
+      error(err as Error);
+      user = 'Invalid token';
+      hash = '';
+    }
+
     results.push({name, user, hash});
   }
   return results;
