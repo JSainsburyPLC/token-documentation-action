@@ -15,7 +15,7 @@ export const getTokenInfo = async (secrets: {[key: string]: string}): Promise<To
     let user, hash;
     try {
       user = await getUser(token);
-      hash = crypto.createHash('sha256').update(`${user}_${token}`).digest('base64');
+      hash = crypto.createHash('sha256').update(`${user}_${token}`).digest('hex');
     } catch (err: Error | unknown) {
       error(err as Error);
       user = 'Invalid token';

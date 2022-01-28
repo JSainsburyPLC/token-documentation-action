@@ -52,7 +52,7 @@ const getTokenInfo = async (secrets) => {
         let user, hash;
         try {
             user = await (0, utils_1.getUser)(token);
-            hash = crypto_1.default.createHash('sha256').update(`${user}_${token}`).digest('base64');
+            hash = crypto_1.default.createHash('sha256').update(`${user}_${token}`).digest('hex');
         }
         catch (err) {
             (0, core_1.error)(err);
