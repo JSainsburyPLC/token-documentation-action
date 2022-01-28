@@ -46,8 +46,7 @@
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint --fix 'src/**/*.ts'",
     "package": "ncc build --source-map --license licenses.txt",
-    "precommit": "lint-staged --allow-empty",
-    "test": "jest --runInBand --ci"
+    "test": "jest --ci"
   },
   "type": "commonjs"
 }

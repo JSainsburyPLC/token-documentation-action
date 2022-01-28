@@ -1,4 +1,3 @@
-# This must be kept in sync with .prettierrc.json
 root = true
 [*]
 charset = utf-8
