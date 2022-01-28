@@ -13,7 +13,7 @@ export const getTokenInfo = async (secrets: {[key: string]: string}): Promise<To
     }
     const token = secrets[name];
     const user = await getUser(token);
-    const hash = crypto.createHash('sha256').update(`${user}_${token}`).digest('base64');
+    const hash = crypto.createHash('sha256').update(`${user}_${token}`).digest('hex');
     results.push({name, user, hash});
   }
   return results;

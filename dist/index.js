@@ -50,7 +50,7 @@ const getTokenInfo = async (secrets) => {
         }
         const token = secrets[name];
         const user = await (0, utils_1.getUser)(token);
-        const hash = crypto_1.default.createHash('sha256').update(`${user}_${token}`).digest('base64');
+        const hash = crypto_1.default.createHash('sha256').update(`${user}_${token}`).digest('hex');
         results.push({ name, user, hash });
     }
     return results;

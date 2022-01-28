@@ -16,7 +16,7 @@ describe('getTokenInfo', () => {
       {
         name: 'token',
         user: 'bob',
-        hash: 'dn22dsipxx28CcHoEoVua54NIjiw3SsvHguLdk0Hqwk=' //'bob_' + token
+        hash: '767db676c8a9c71dbc09c1e812856e6b9e0d2238b0dd2b2f1e0b8b764d07ab09' //'bob_' + token
       }
     ]);
   });
